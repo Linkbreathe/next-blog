@@ -4,6 +4,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import { ThemeContextProvider } from "@/context/ThemeContext";
 import ThemeProvider from "@/providers/themeProvider";
+import {AuthenProvider} from "@/providers/AuthenProvider"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+        <AuthenProvider>
         <ThemeContextProvider>
           <ThemeProvider>
             <div className="container">
@@ -27,6 +29,7 @@ export default function RootLayout({ children }) {
             </div>
           </ThemeProvider>
         </ThemeContextProvider>
+        </AuthenProvider>
       </body>
     </html>
   );
