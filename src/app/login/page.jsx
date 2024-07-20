@@ -5,7 +5,6 @@ import Link from 'next/link'
 
 const LoginPage = () => {
   const { data, status } = useSession()
-  console.log(data, status)
   return (
 
     <div className={style.container}>

@@ -7,7 +7,7 @@ import { useState } from "react";
 const AuthLinks = () => {
   //temporary
   const { data, status } = useSession()
-  console.log(status)
+  // console.log(status)
   const [open, setOpen] = useState(false);
 
   return (

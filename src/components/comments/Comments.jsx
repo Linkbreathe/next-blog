@@ -1,8 +1,30 @@
+'use client'
 import styles from "./comments.module.css";
 import Image from "next/image";
+import WEB_API from "@/utils/prefix"
+import useSWR from "swr";
+import Link from "next/link";
 
-const Comments = () => {
-  const status = "authenticated";
+import { useSession } from "next-auth/react";
+import { format } from 'date-fns';
+
+const formatDate = (isoDate) => {
+  return format(new Date(isoDate), 'yyyy-MM-dd HH:mm');
+};
+
+const fetcher = async (url) => {
+  const res = await fetch(url);
+  const data = await res.json();
+  if (!res.ok) {
+    const error = new Error(data.message)
+    throw error;
+  }
+  return data;
+}
+
+const Comments = ({ postSlug }) => {
+  const { status } = useSession();
+  const { data, isLoading, error } = useSWR(WEB_API + `/comments?postSlug=${postSlug}`, fetcher);
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Comments</h1>
@@ -17,92 +39,33 @@ const Comments = () => {
       ) : (
         <Link href="/login">Login to write a comment</Link>
       )}
-      <div className={styles.comments}>
-        <div className={styles.comment}>
-          <div className={styles.user}>
-            <div className={styles.userImageContainer}>
-              <Image
-                src="/p1.jpeg"
-                alt=""
-                className={styles.image}
-                width={50}
-                height={50}
-              />
-            </div>
-            <div className={styles.userInfo}>
-              <span className={styles.username}>John Doe</span>
-              <span className={styles.date}>01.01.1081</span>
-            </div>
-          </div>
-          <p className={styles.desc}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Repellendus repellat!
-          </p>
-        </div>
-        <div className={styles.comment}>
-          <div className={styles.user}>
-            <div className={styles.userImageContainer}>
-              <Image
-                src="/p1.jpeg"
-                alt=""
-                className={styles.image}
-                width={50}
-                height={50}
-              />
-            </div>
-            <div className={styles.userInfo}>
-              <span className={styles.username}>John Doe</span>
-              <span className={styles.date}>01.01.1081</span>
+
+      {isLoading ? "loading" :
+        data?.comments?.map((item) => (
+          <div key={item.id} className={styles.comments}>
+            <div className={styles.comment}>
+              <div className={styles.user}>
+                <div className={styles.userImageContainer}>
+                  <Image
+                    src={item.user.image}
+                    alt=""
+                    className={styles.image}
+                    width={50}
+                    height={50}
+                  />
+                </div>
+                <div className={styles.userInfo}>
+                  <span className={styles.username}>{item.user.name}</span>
+                  <span className={styles.date}>{formatDate(item.createdAt)}</span>
+                </div>
+              </div>
+              <p className={styles.desc}>
+                {item.desc}
+              </p>
             </div>
           </div>
-          <p className={styles.desc}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Repellendus repellat!
-          </p>
-        </div>
-        <div className={styles.comment}>
-          <div className={styles.user}>
-            <div className={styles.userImageContainer}>
-              <Image
-                src="/p1.jpeg"
-                alt=""
-                className={styles.image}
-                width={50}
-                height={50}
-              />
-            </div>
-            <div className={styles.userInfo}>
-              <span className={styles.username}>John Doe</span>
-              <span className={styles.date}>01.01.1081</span>
-            </div>
-          </div>
-          <p className={styles.desc}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Repellendus repellat!
-          </p>
-        </div>
-        <div className={styles.comment}>
-          <div className={styles.user}>
-            <div className={styles.userImageContainer}>
-              <Image
-                src="/p1.jpeg"
-                alt=""
-                className={styles.image}
-                width={50}
-                height={50}
-              />
-            </div>
-            <div className={styles.userInfo}>
-              <span className={styles.username}>John Doe</span>
-              <span className={styles.date}>01.01.1081</span>
-            </div>
-          </div>
-          <p className={styles.desc}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Repellendus repellat!
-          </p>
-        </div>
-      </div>
+        )
+        )}
     </div>
   );
 };

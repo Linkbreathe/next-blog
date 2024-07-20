@@ -2,54 +2,54 @@ import styles from "./singlePage.module.css";
 import Image from "next/image";
 import Menu from "@/components/Menu/Menu";
 import Comments from "@/components/comments/Comments";
+import WEB_API from "@/utils/prefix";
+const getData = async (slug) => {
+  const res = await fetch(`${WEB_API}/blog/${slug}`, { cache: "no-store" });
+  if (!res.ok) {
+    throw new Error("Failed")
+  }
+  return res.json()
+}
 
-const SinglePage = () => {
+
+const SinglePage = async ({ params }) => {
+  const { slug } = params
+  const { blog } = await getData(slug)
+  const formattedDate = blog.createdAt.split('T')[0];
   return (
     <div className={styles.container}>
       <div className={styles.infoContainer}>
         <div className={styles.textContainer}>
           <h1 className={styles.title}>
-            Lorem Ipsum is simply dummy for printing
+            {blog.title}
           </h1>
           <div className={styles.user}>
             <div className={styles.userImageContainer}>
-              <Image src="/p1.jpeg" alt="" fill className={styles.avatar} />
+              {
+                blog?.user?.image &&
+                <Image src={blog.user.image} alt="" fill className={styles.avatar} />
+              }
             </div>
             <div className={styles.userTextContainer}>
-              <span className={styles.user}>John Doe</span>
-              <span className={styles.date}>01.01.1081</span>
+              <span className={styles.user}>{blog.user.name}</span>
+              <span className={styles.date}>{formattedDate}</span>
             </div>
           </div>
         </div>
         <div className={styles.imageContainer}>
-          <Image src="/p1.jpeg" alt="" fill className={styles.image} />
+          {
+            blog?.img &&
+            <Image src={blog.img} alt="" fill className={styles.image} />
+          }
         </div>
       </div>
       <div className={styles.content}>
         <div className={styles.post}>
-          <div className={styles.description}>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam,
-              rerum tenetur. Laboriosam veniam enim commodi, eaque quo
-              voluptatibus facilis nulla, necessitatibus sed provident
-              doloremque ex, amet perspiciatis delectus quaerat quidem.
-            </p>
-            <h2>Lorem, ipsum dolor sit amet</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam,
-              rerum tenetur. Laboriosam veniam enim commodi, eaque quo
-              voluptatibus facilis nulla, necessitatibus sed provident
-              doloremque ex, amet perspiciatis delectus quaerat quidem.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam,
-              rerum tenetur. Laboriosam veniam enim commodi, eaque quo
-              voluptatibus facilis nulla, necessitatibus sed provident
-              doloremque ex, amet perspiciatis delectus quaerat quidem.
-            </p>
-          </div>
+          {/* key point */}
+          <div className={styles.description} dangerouslySetInnerHTML={{ __html: blog?.desc }} />
+
           <div className={styles.comment}>
-            <Comments />
+            <Comments postSlug={slug} />
           </div>
         </div>
         <Menu />

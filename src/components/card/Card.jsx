@@ -2,26 +2,27 @@ import styles from "./card.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
-const Card = () => {
+const Card = ({ item }) => {
+  const formattedDate = item.createdAt.split('T')[0];
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
-        <Image src="/p1.jpeg" alt="" fill className={styles.image} />
+        {
+          item.img && <Image src={item.img} alt="" fill className={styles.image} />
+        }
       </div>
       <div className={styles.textContainer}>
         <div className={styles.detail}>
-          <span className={styles.date}>02.12.2023 - </span>
-          <span className={styles.category}>CULTURE</span>
+          <span className={styles.date}>{formattedDate} - </span>
+          <span className={styles.category}>{item.catSlug}</span>
         </div>
         <Link href="/">
-          <h1>The standard Lorem Ipsum passage, used since the 1500s</h1>
+          <h1>{item.title}</h1>
         </Link>
         <p className={styles.desc}>
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don't look even slightly believable.
+          {item.desc}
         </p>
-        <Link href="/" className={styles.link}>Read more</Link>
+        <Link href={`/blog/${item.slug}`} className={styles.link}>Read more</Link>
       </div>
     </div>
   );

@@ -2,14 +2,16 @@ import CardList from '@/components/cardList/CardList'
 import Menu from '@/components/Menu/Menu'
 import styles from './blogPage.module.css'
 
-const BlogPage = () => {
+const BlogPage = ({ searchParams }) => {
+  const page = parseInt(searchParams.page)
+  const cat = searchParams.cat
   return (
     <div className={styles.container}>
-        <h1 className={styles.title}>Style Blog</h1>
-        <div className={styles.content}>
-            <CardList />
-            <Menu />
-        </div>
+      <h1 className={styles.title}> {cat} Blog</h1>
+      <div className={styles.content}>
+        <CardList page={page} cat={cat} />
+        <Menu />
+      </div>
     </div>
   )
 }

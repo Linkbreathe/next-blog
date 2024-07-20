@@ -6,13 +6,14 @@ import CardList from "@/components/cardList/CardList";
 import Menu from '@/components/Menu/Menu'
 
 
-export default function Home() {
+export default function Home({ searchParams }) {
+  const page = searchParams.page || 1
   return (
     <div className={styles.container}>
       <Featured />
       <CategoryList />
       <div className={styles.content}>
-        <CardList />
+        <CardList page={page} />
         <Menu />
       </div>
     </div>
