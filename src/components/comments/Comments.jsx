@@ -4,9 +4,10 @@ import Image from "next/image";
 import WEB_API from "@/utils/prefix"
 import useSWR from "swr";
 import Link from "next/link";
-
+import { useState } from 'react'
 import { useSession } from "next-auth/react";
 import { format } from 'date-fns';
+import { getAuthSession } from "@/utils/auth";
 
 const formatDate = (isoDate) => {
   return format(new Date(isoDate), 'yyyy-MM-dd HH:mm');
@@ -24,7 +25,19 @@ const fetcher = async (url) => {
 
 const Comments = ({ postSlug }) => {
   const { status } = useSession();
-  const { data, isLoading, error } = useSWR(WEB_API + `/comments?postSlug=${postSlug}`, fetcher);
+
+  const [desc, setDesc] = useState("");
+  const { data, isLoading, mutate } = useSWR(WEB_API + `/comments?postSlug=${postSlug}`, fetcher);
+  const handleSumbit = async () => {
+    await fetch("/api/comments", {
+      // 确定方法
+      method: "POST",
+      body: JSON.stringify({ desc, postSlug })
+    });
+    mutate();
+    setDesc(""); // 清空textarea
+  }
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Comments</h1>
@@ -33,8 +46,9 @@ const Comments = ({ postSlug }) => {
           <textarea
             placeholder="write a comment..."
             className={styles.input}
+            onChange={e => setDesc(e.target.value)}
           ></textarea>
-          <button className={styles.button}>Send</button>
+          <button className={styles.button} onClick={handleSumbit}>Send</button>
         </div>
       ) : (
         <Link href="/login">Login to write a comment</Link>

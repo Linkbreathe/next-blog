@@ -12,7 +12,7 @@ const WritePage = () => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
   const { status } = useSession();
-  const router = useRouter();
+  // const router = useRouter();
   if (status === "loading") {
     return (<div>Loading...</div>)
   }
