@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Card = ({ item }) => {
+  console.log(item)
   const formattedDate = item.createdAt.split('T')[0];
   return (
     <div className={styles.container}>

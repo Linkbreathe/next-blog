@@ -1,9 +1,10 @@
-/** @type {import('next').NextConfig} */
-// settings such as picture
-const nextConfig = {
-    images:{
-        domains:["avatars.githubusercontent.com"]
+    /** @type {import('next').NextConfig} */
+    // settings such as picture
+    const nextConfig = {
+        images:{
+            timeout: 3000, // 默认是1000，这里设置为3000毫秒
+            domains:["avatars.githubusercontent.com","firebasestorage.googleapis.com"]
+        }
     }
-}
 
-module.exports = nextConfig
+    module.exports = nextConfig
