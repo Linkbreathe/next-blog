@@ -86,6 +86,7 @@ model Post {
   cat       Category  @relation(fields: [catSlug], references: [slug])
   userEmail String
   user      User      @relation(fields: [userEmail], references: [email])
+  pick      Boolean
   comments  Comment[]
 }
 

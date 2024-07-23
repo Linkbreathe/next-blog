@@ -4,13 +4,15 @@ import styles from "./write.module.css";
 import "react-quill/dist/quill.bubble.css";
 import Image from "next/image";
 import ReactQuill from "react-quill";
+import useSWR from "swr";
+import WEB_API from "@/utils/prefix";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { app } from "@/utils/firebase"
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import useSWR from "swr";
-import WEB_API from "@/utils/prefix";
+import { useRouter } from "next/navigation";
 
+import { Button } from "@nextui-org/button";
 
 function transformStringWithTimestamp(input) {
   let parts = input.split(' ');
@@ -45,7 +47,7 @@ const WritePage = () => {
   const { status } = useSession();
 
   const handleSumbit = async () => {
-    await fetch("/api/write", {
+    const { status } = await fetch("/api/write", {
       // 确定方法
       method: "POST",
       body: JSON.stringify({
@@ -58,6 +60,8 @@ const WritePage = () => {
     });
     mutate();
     setValue(""); // 清空textarea
+    if (status === 200) router.push(`/blog/${transformStringWithTimestamp(title)}`)
+    console.log(status)
   }
 
   useEffect(() => {
@@ -102,7 +106,7 @@ const WritePage = () => {
     file && upload();
   }, [file])
 
-  // const router = useRouter();
+  const router = useRouter();
   if (status === "loading") {
     return (<div>Loading...</div>)
   }

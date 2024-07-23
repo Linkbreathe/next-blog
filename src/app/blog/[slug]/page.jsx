@@ -3,6 +3,14 @@ import Image from "next/image";
 import Menu from "@/components/Menu/Menu";
 import Comments from "@/components/comments/Comments";
 import WEB_API from "@/utils/prefix";
+
+import { format } from 'date-fns';
+import Loading from "./loading";
+
+const formatDate = (isoDate) => {
+  return format(new Date(isoDate), 'yyyy-MM-dd HH:mm');
+};
+
 const getData = async (slug) => {
   const res = await fetch(`${WEB_API}/blog/${slug}`, { cache: "no-store" });
   if (!res.ok) {
@@ -15,9 +23,13 @@ const getData = async (slug) => {
 const SinglePage = async ({ params }) => {
   const { slug } = params
   const { blog } = await getData(slug)
-  const formattedDate = blog.createdAt.split('T')[0];
   return (
+    // <div className={styles.container}>
+
+    //   <Loading />
+    // </div>
     <div className={styles.container}>
+      <Loading />
       <div className={styles.infoContainer}>
         <div className={styles.textContainer}>
           <h1 className={styles.title}>
@@ -32,7 +44,7 @@ const SinglePage = async ({ params }) => {
             </div>
             <div className={styles.userTextContainer}>
               <span className={styles.user}>{blog.user.name}</span>
-              <span className={styles.date}>{formattedDate}</span>
+              <span className={styles.date}>{formatDate(blog.createdAt)}</span>
             </div>
           </div>
         </div>

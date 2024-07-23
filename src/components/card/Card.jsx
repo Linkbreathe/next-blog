@@ -1,15 +1,19 @@
 import styles from "./card.module.css";
-import Image from "next/image";
+import { Image } from "@nextui-org/image";
 import Link from "next/link";
 
+const options = {
+  wordwrap: 130,
+};
+
 const Card = ({ item }) => {
-  console.log(item)
   const formattedDate = item.createdAt.split('T')[0];
   return (
     <div className={styles.container}>
+
       <div className={styles.imageContainer}>
         {
-          item.img && <Image src={item.img} alt="" fill className={styles.image} />
+          item.img && <Image isZoomed class="object-cover" width={500} height={370} src={item.img} alt="" className={styles.image} />
         }
       </div>
       <div className={styles.textContainer}>
@@ -20,9 +24,8 @@ const Card = ({ item }) => {
         <Link href="/">
           <h1>{item.title}</h1>
         </Link>
-        <p className={styles.desc}>
-          {item.desc}
-        </p>
+        {item?.desc}
+        <div className={styles.texts} dangerouslySetInnerHTML={{ __html: item?.desc }} />
         <Link href={`/blog/${item.slug}`} className={styles.link}>Read more</Link>
       </div>
     </div>

@@ -14,3 +14,8 @@
     background-color: rgba(220, 20, 60, 0.324);
     cursor:not-allowed;
 }
+.pageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

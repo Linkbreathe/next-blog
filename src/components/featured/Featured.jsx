@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./featured.module.css";
-import Image from "next/image";
+import { Image } from "@nextui-org/image";
 
 const Featured = () => {
   return (
@@ -11,7 +11,7 @@ const Featured = () => {
       </h1>
       <div className={styles.post}>
         <div className={styles.imgContainer}>
-          <Image src="/p1.jpeg" alt="" fill className={styles.image} />
+          <Image isZoomed class="object-cover" height={450} width={700} src="/p1.jpeg" alt="" fill className={styles.image} />
         </div>
         <div className={styles.textContainer}>
           <h1 className={styles.postTitle}>What is Lorem Ipsum?</h1>

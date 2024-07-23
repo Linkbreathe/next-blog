@@ -2,6 +2,7 @@ import CardList from '@/components/cardList/CardList'
 import Menu from '@/components/Menu/Menu'
 import styles from './blogPage.module.css'
 
+
 const BlogPage = ({ searchParams }) => {
   const page = parseInt(searchParams.page)
   const cat = searchParams.cat

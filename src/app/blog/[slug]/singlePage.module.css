@@ -1,3 +1,6 @@
+.contaienr{
+  height: auto;
+}
 .infoContainer {
     display: flex;
     align-items: center;
