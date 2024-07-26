@@ -11,7 +11,9 @@
   "dependencies": {
     "@auth/mongodb-adapter": "^3.4.1",
     "@auth/prisma-adapter": "^2.4.1",
+    "@nextui-org/autocomplete": "^2.1.5",
     "@nextui-org/button": "^2.0.37",
+    "@nextui-org/dropdown": "^2.1.29",
     "@nextui-org/image": "^2.0.31",
     "@nextui-org/react": "^2.4.6",
     "@nextui-org/spinner": "^2.0.33",
@@ -29,8 +31,11 @@
     "next-auth": "^4.24.7",
     "prisma": "^5.17.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^9.0.1",
     "react-quill": "^2.0.0",
+    "react-syntax-highlighter": "^15.5.0",
+    "remark-gfm": "^4.0.0",
     "swr": "^2.2.5",
     "undici": "^6.19.2"
   },

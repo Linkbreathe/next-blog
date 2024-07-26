@@ -3,12 +3,13 @@
 // const {nextui} = require("@nextui-org/theme");
 // module.exports = {
 //
+  //
   // content: [
-  //   "//     ./app/**/*.{js,ts,jsx,tsx,mdx}",
-  //   "//     ./pages/**/*.{js,ts,jsx,tsx,mdx}",
-  //   "//     ./components/**/*.{js,ts,jsx,tsx,mdx}",
-  //   "//     // Or if using src directory:\n//     ./src/**/*.{js,ts,jsx,tsx,mdx}",
-  //   "./node_modules/@nextui-org/theme/dist/components/(button|image|spinner|ripple).js"
+  //   "//   //     ./app/**/*.{js,ts,jsx,tsx,mdx}",
+  //   "//   //     ./pages/**/*.{js,ts,jsx,tsx,mdx}",
+  //   "//   //     ./components/**/*.{js,ts,jsx,tsx,mdx}",
+  //   "//   //     // Or if using src directory:\\\\n//     ./src/**/*.{js,ts,jsx,tsx,mdx}",
+  //   "./node_modules/@nextui-org/theme/dist/components/(autocomplete|button|dropdown|image|spinner|ripple|input|listbox|divider|popover|scroll-shadow|menu).js"
   // ],
 //   theme: {
 //     extend: {},
@@ -23,16 +24,23 @@ const { nextui } = require("@nextui-org/react");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+  // content: [
+  //   "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  //   "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+  //   "./components/**/*.{js,ts,jsx,tsx,mdx}",
  
-    // Or if using `src` directory:
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
-    // ...
-    // make sure it's pointing to the ROOT node_module
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
+  //   // Or if using `src` directory:
+  //   "./src/**/*.{js,ts,jsx,tsx,mdx}",
+  //   // ...
+  //   // make sure it's pointing to the ROOT node_module
+  //   "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
+  // ],
+  content: [
+    "//   //     ./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "//   //     ./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "//   //     ./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "//   //     // Or if using src directory:\\\\n//     ./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@nextui-org/theme/dist/components/(autocomplete|button|dropdown|image|spinner|ripple|input|listbox|divider|popover|scroll-shadow|menu).js"
   ],
   theme: {
     extend: {},

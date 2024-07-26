@@ -24,7 +24,6 @@ const Card = ({ item }) => {
         <Link href="/">
           <h1>{item.title}</h1>
         </Link>
-        {item?.desc}
         <div className={styles.texts} dangerouslySetInnerHTML={{ __html: item?.desc }} />
         <Link href={`/blog/${item.slug}`} className={styles.link}>Read more</Link>
       </div>

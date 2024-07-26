@@ -2,8 +2,9 @@
 import React from "react";
 import styles from "./categoryList.module.css";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 import WEB_API from '@/utils/prefix'
+import { Card, CardHeader, CardBody, CardFooter, Image, Button } from "@nextui-org/react";
 
 const getData = async () => {
   const res = await fetch(`${WEB_API}/categories`, { cache: "no-store" });
@@ -17,7 +18,7 @@ const CategoryList = async () => {
   const data = await getData();
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Popular Categories</h1>
+      <h1 class="text-2xl	py-8" className={styles.title}>Popular Categories</h1>
       <div className={styles.categories}>
         {
           data?.map((item) => (<Link href="/blog?cat=style" className={`${styles.category} ${styles[item.slug]}`}>
@@ -31,12 +32,10 @@ const CategoryList = async () => {
             {item.slug}
           </Link>))
         }
-
-
-
       </div>
     </div>
   );
+
 };
 
 export default CategoryList;

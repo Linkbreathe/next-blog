@@ -2,7 +2,6 @@
 
 import styles from "./write.module.css";
 import "react-quill/dist/quill.bubble.css";
-import Image from "next/image";
 import ReactQuill from "react-quill";
 import useSWR from "swr";
 import WEB_API from "@/utils/prefix";
@@ -11,8 +10,9 @@ import { useSession } from "next-auth/react";
 import { app } from "@/utils/firebase"
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useRouter } from "next/navigation";
+import { Button } from "@nextui-org/react";
 
-import { Button } from "@nextui-org/button";
+import { Card, CardHeader, CardBody, CardFooter, Divider, Link, Image } from "@nextui-org/react";
 
 function transformStringWithTimestamp(input) {
   let parts = input.split(' ');
@@ -110,15 +110,31 @@ const WritePage = () => {
   if (status === "loading") {
     return (<div>Loading...</div>)
   }
+
+
+
+  const iconClasses = "text-xl text-default-500 pointer-events-none flex-shrink-0";
+
   if (status === "authenticated")
     return (
       <div className={styles.container}>
+
+
         <input onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Title" className={styles.input} />
         <div className={styles.editor}>
-          <button className={styles.button} onClick={() => setOpen(!open)}>
+          {/* <button className={styles.button} onClick={() => setOpen(!open)}>
             <Image src="/plus.png" alt="" width={16} height={16} />
-          </button>
-          {open && (
+          </button> */}
+
+          <Button color="primary" variant="bordered" onClick={() => { setOpen(!open) }}>
+            Image
+          </Button>
+          <Button color="primary" variant="bordered">
+            Clear
+          </Button>
+
+
+          {/* {open && (
             <div className={styles.add}>
               <input
                 id="image"
@@ -138,14 +154,14 @@ const WritePage = () => {
                 <Image src="/video.png" alt="" width={16} height={16} />
               </button>
             </div>
-          )}
-          <ReactQuill
+          )} */}
+          {/* <ReactQuill
             className={styles.textArea}
             theme="bubble"
             value={value}
             onChange={setValue}
             placeholder={"Tell your story"}
-          />
+          /> */}
         </div>
         <button className={styles.publish} onClick={handleSumbit}>Publish</button>
       </div>
