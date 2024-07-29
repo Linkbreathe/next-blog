@@ -1,17 +1,10 @@
-
-import PickSkeleton from "@/app/ui/skeleton/sidebar/PickSkeleton";
-import PopularSkeleton from "@/app/ui/skeleton/sidebar/PopularSkeleton";
-import TopicCategoriesSkeleton from "@/app/ui/skeleton/sidebar/TopicCategoriesSkeleton";
 import React from "react";
-
-
+import Image from "next/image";
 
 export default function Loading() {
     return (
-        <>
-            <PopularSkeleton />
-            <TopicCategoriesSkeleton />
-            <PickSkeleton />
-        </>
+        <div class="flex justify-center items-center">
+            <Image width={160} height={160} src="/2d-mario-running.gif" />
+        </div>
     );
 }

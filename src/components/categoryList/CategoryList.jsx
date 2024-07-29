@@ -1,10 +1,10 @@
-
+"use client"
 import React from "react";
 import styles from "./categoryList.module.css";
 import Link from "next/link";
 // import Image from "next/image";
 import WEB_API from '@/utils/prefix'
-import { Card, CardHeader, CardBody, CardFooter, Image, Button } from "@nextui-org/react";
+import { Image } from "@nextui-org/react";
 
 const getData = async () => {
   const res = await fetch(`${WEB_API}/categories`, { cache: "no-store" });

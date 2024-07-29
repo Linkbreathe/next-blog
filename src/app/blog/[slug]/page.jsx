@@ -5,7 +5,8 @@ import Comments from "@/components/comments/Comments";
 import WEB_API from "@/utils/prefix";
 
 import { format } from 'date-fns';
-import Loading from "./loading";
+import Articles from "@/components/articles/Articles";
+
 
 
 
@@ -31,7 +32,6 @@ const SinglePage = async ({ params }) => {
     //   <Loading />
     // </div>
     <div className={styles.container}>
-      <Loading />
       <div className={styles.infoContainer}>
         <div className={styles.textContainer}>
           <h1 className={styles.title}>
@@ -60,8 +60,9 @@ const SinglePage = async ({ params }) => {
       <div className={styles.content}>
         <div className={styles.post}>
           {/* key point */}
-          <div className={styles.description} dangerouslySetInnerHTML={{ __html: blog?.desc }} />
 
+          {/* <div className={styles.description} dangerouslySetInnerHTML={{ __html: blog?.desc }} /> */}
+          <Articles desc={blog?.desc} />
           <div className={styles.comment}>
             <Comments postSlug={slug} />
           </div>
