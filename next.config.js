@@ -6,6 +6,9 @@ const nextConfig = {
         domains:["avatars.githubusercontent.com","firebasestorage.googleapis.com","tenor.com"],
         unoptimized: true,
     },
+    env: {
+        GOOGLE_MAP_API_KEY: process.env.GOOGLE_MAP_API_KEY,
+    },
     reactStrictMode: false
 }
 

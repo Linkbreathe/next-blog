@@ -247,7 +247,6 @@ const WritePage = () => {
               </ModalContent>
             </Modal>
 
-
             <Dropdown>
               <DropdownTrigger>
 
@@ -275,7 +274,6 @@ const WritePage = () => {
           <Notify />
         </div>
         <div>
-
           <MDEditor
             value={desc}
             onChange={(desc) => setDesc(desc)}
@@ -304,7 +302,6 @@ const WritePage = () => {
               },
             }}
           />
-
         </div>
       </div>
     );

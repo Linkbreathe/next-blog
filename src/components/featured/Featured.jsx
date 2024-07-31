@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./featured.module.css";
 import { Image } from "@nextui-org/image";
+import MapRender from "@/components/mapRender/MapRender";
 
 const Featured = () => {
   return (
@@ -9,9 +10,15 @@ const Featured = () => {
         <b>Hey, Link was here!</b>
         Discover my creativity and endeavor.
       </h1>
+
+
       <div className={styles.post}>
-        <div className={styles.imgContainer}>
+        {/* <div className={styles.imgContainer}>
           <Image isZoomed class="object-cover" height={450} width={700} src="/p1.jpeg" alt="" fill className={styles.image} />
+        </div> */}
+        <div className="w-2/3">
+
+          <MapRender />
         </div>
         <div className={styles.textContainer}>
           <h1 className={styles.postTitle}>What is Lorem Ipsum?</h1>
