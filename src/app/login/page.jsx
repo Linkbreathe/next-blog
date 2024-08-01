@@ -10,7 +10,6 @@ const LoginPage = () => {
   console.log(data)
   console.log(status)
   return (
-
     <div className={style.container}>
       <div className={style.wrapper}>
 

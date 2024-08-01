@@ -11,6 +11,7 @@ export const POST = async (req) => {
     
     try {
         const body = await req.json()
+        console.log(req)
         const post = await prisma.post.create({
             data:{
                 ...body, userEmail:session.user.email

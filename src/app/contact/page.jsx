@@ -5,7 +5,8 @@ import { PersonInfo } from '@/components/personInfo/PersonInfo';
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import GeoLocateButton from '@/components/geoLocateButton/GeoLocateButton';
+
 
 const markdown = `A paragraph with *emphasis* and **strong importance**.
 * # hello world
@@ -41,12 +42,11 @@ Here is some JavaScript code:
 print("hello")
 ~~~
 `
-
-
 const ContactPage = () => {
     return (
-        <div>
+        <div className='min-h-max'>
             {/* <Markdown remarkPlugins={[remarkGfm]}>{markdown}</Markdown> */}
+            <GeoLocateButton />
             <Markdown
                 children={markdown_1}
                 remarkPlugins={[remarkGfm]}

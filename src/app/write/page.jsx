@@ -39,6 +39,7 @@ import { BiCategory } from "react-icons/bi";
 
 import { notifySuccess, notifyError } from "@/components/noftify/Notify";
 import Notify from "@/components/noftify/Notify";
+import GeoLocateButton from "@/components/geoLocateButton/GeoLocateButton";
 
 
 function transformStringWithTimestamp(input) {
@@ -88,20 +89,12 @@ const WritePage = () => {
   const [desc, setDesc] = useState("# Support markdown and katex grammar")
   const [images, setImages] = useState([]);
   const [upLoading, setUploading] = useState(false);
+
+  const [position, setPosition] = useState({});
   const { status } = useSession();
 
-  const handleSumbit = async () => {
-    const { status } = await fetch("/api/write", {
-      // 确定方法
-      method: "POST",
-      body: JSON.stringify({
-        title: title,
-        catSlug: selectedValue,
-        img: media,
-        desc: desc,
-        slug: transformStringWithTimestamp(title)
-      })
-    });
+  const handleSubmit = async () => {
+    // 验证输入
     if (title === "") {
       notifyError("Please enter the title of the blog");
       return;
@@ -114,13 +107,43 @@ const WritePage = () => {
       notifyError("Please choose the category");
       return;
     }
-    mutate();
-
-    if (status === 200) {
-      notifySuccess("published successfully, waiting for a while ... ")
-      router.push(`/blog/${transformStringWithTimestamp(title)}`)
+    if (Object.keys(position).length === 0 && position.constructor === Object) {
+      notifyError("Please get the current position");
+      return;
     }
+
+    // 发送请求
+    const response = await fetch("/api/write", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: title,
+        catSlug: selectedValue,
+        img: media,
+        desc: desc,
+        pick: false,
+        slug: transformStringWithTimestamp(title),
+        location: {
+          type: "note", // Adjust as needed
+          coordinates: [position.lat, position.lng] // Assuming `position` is in [lat, long] format
+        }
+      })
+    });
+
+    const { status } = response;
+    if (status === 200) {
+      notifySuccess("Published successfully, waiting for a while...");
+      router.push(`/blog/${transformStringWithTimestamp(title)}`);
+    } else {
+      notifyError("Failed to publish the blog. Please try again.");
+    }
+    // 调用 mutate
+    mutate();
   }
+
+
   useEffect(() => {
 
     const upload = () => {
@@ -266,8 +289,13 @@ const WritePage = () => {
 
               </DropdownMenu>
             </Dropdown>
+            <GeoLocateButton setPosition={setPosition} />
           </div>
-          <Button onPress={handleSumbit} className="bg-gradient-to-r  from-green-300 to-transparent"><IoIosSend /></Button>
+
+
+          <Button onPress={handleSubmit} className="bg-gradient-to-r  from-green-300 to-transparent">
+            <IoIosSend />
+          </Button>
           <Notify />
         </div>
         <div>
