@@ -7,7 +7,7 @@ const MapRender = () => {
         <div>
             <Map
                 mapId={"db2c4bf96eda4647"}
-                style={{ width: '100%', height: '50vh' }}
+                style={{ width: '100%', height: '70vh' }}
                 defaultCenter={{ lat: 39.109372, lng: 66.886724 }}
                 defaultZoom={3}
                 gestureHandling={'greedy'}

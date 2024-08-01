@@ -13,7 +13,7 @@ const Card = ({ item }) => {
 
       <div className={styles.imageContainer}>
         {
-          item.img && <Image isZoomed class="object-cover" width={500} height={370} src={item.img} alt="" className={styles.image} />
+          item.img && <Image isZoomed className="object-cover" width={500} height={320} src={item.img} alt="" />
         }
       </div>
       <div className={styles.textContainer}>

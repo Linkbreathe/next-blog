@@ -86,8 +86,14 @@ model Post {
   cat       Category  @relation(fields: [catSlug], references: [slug])
   userEmail String
   user      User      @relation(fields: [userEmail], references: [email])
-  pick      Boolean
   comments  Comment[]
+  // pick      Boolean   @default(false)
+  // location  Location?
+}
+
+type Location {
+  type        String  @default("note")
+  coordinates Float[] @default([28.683332, 115.883331])
 }
 
 model Comment {

@@ -173,7 +173,6 @@ const WritePage = () => {
   const router = useRouter();
 
 
-
   if (status === "loading") {
     return (<div>Loading...</div>)
   }
@@ -186,8 +185,6 @@ const WritePage = () => {
 
         <div className="flex justify-between ">
           <div className="flex gap-4 items-center mb-3">
-
-
             {
               upLoading ?
                 <Button isDisabled="true" className="bg-gradient-to-r from-blue-200 to-transparent">
@@ -221,9 +218,9 @@ const WritePage = () => {
                     <ModalBody>
                       {
                         images.length !== 0 ? images.map((item) => ((
-                          <div className="flex flex-wrap	gap-3 items-center justify-center" key={item}>
+                          <div className="flex flex-wrap	gap-2 items-center justify-center" key={item}>
                             {/* <div className="flex-1 flex justify-center items-center"> */}
-                            <Image className="flex-1 " src={item} isZoomed width={150} height={150} className="object-cover" alt="uploaded images' url" />
+                            <Image className="flex-1 object-cover" src={item} isZoomed width={150} height={150} alt="uploaded images' url" />
                             {/* </div> */}
                             <div className="flex-1  bg-slate-200 p-2 rounded-md	">
                               <article className="text-balance ">

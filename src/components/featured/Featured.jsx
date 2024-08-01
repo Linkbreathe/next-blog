@@ -7,15 +7,13 @@ const Featured = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>
-        <b>Hey, Link was here!</b>
-        Discover my creativity and endeavor.
+        <b>Hey, Link was here! </b>
       </h1>
-
+      <span className="text-2xl">
+        Discover my creativity and endeavor.
+      </span>
 
       <div className={styles.post}>
-        {/* <div className={styles.imgContainer}>
-          <Image isZoomed class="object-cover" height={450} width={700} src="/p1.jpeg" alt="" fill className={styles.image} />
-        </div> */}
         <div className="w-2/3">
 
           <MapRender />
