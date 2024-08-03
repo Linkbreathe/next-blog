@@ -14,7 +14,10 @@ const page = async () => {
     const { posts, count } = await getData();
     console.log(posts)
     return (
-        <NoteMap posts={posts} />
+        <div>
+            {count === 0 && <NoteMap posts={posts} />}
+        </div>
+
     )
 }
 

@@ -5,10 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && <actual-build-command>",
-    "build": "next build",
     "start": "next start",
     "postinstall": "prisma generate",
-    
     "lint": "next lint"
   },
   "dependencies": {
