@@ -11,6 +11,7 @@
   "dependencies": {
     "@auth/mongodb-adapter": "^3.4.1",
     "@auth/prisma-adapter": "^2.4.1",
+    "@next/eslint-plugin-next": "^14.2.5",
     "@nextui-org/autocomplete": "^2.1.5",
     "@nextui-org/button": "^2.0.37",
     "@nextui-org/dropdown": "^2.1.29",
