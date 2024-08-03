@@ -1,7 +1,6 @@
 import "./globals.css";
 import MyNavbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
-import ThemeProvider from "@/providers/themeProvider";
 import { Inter } from "next/font/google";
 import { ThemeContextProvider } from "@/context/ThemeContext";
 import { AuthenProvider } from "@/providers/AuthenProvider"

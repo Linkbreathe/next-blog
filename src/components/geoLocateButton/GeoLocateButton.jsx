@@ -11,7 +11,6 @@ const GeoLocateButton = ({ setPosition }) => {
 
     useEffect(() => {
         if (position.lat !== undefined || position.lng !== undefined) {
-            console.log(position)
             notifySuccess("Successfully obtained the current location")
             setPosition(position);
         }

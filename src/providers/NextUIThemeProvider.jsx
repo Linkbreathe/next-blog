@@ -1,6 +1,5 @@
 "use client"
 import React, { useContext, useEffect, useState } from 'react'
-import { NextUIProvider } from "@nextui-org/react";
 import { ThemeContext } from "@/context/ThemeContext";
 
 const NextUIThemeProvider = ({ children }) => {

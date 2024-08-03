@@ -4,7 +4,6 @@ import { Map } from '@vis.gl/react-google-maps';
 import MarkerWithInfoWindow from '@/components/markerWithInfoWindow/MarkerWithInfoWindow';
 
 const NoteMap = ({ posts }) => {
-    console.log(posts)
     return (
         <div> <Map
             mapId={"6f31eff839681822"}

@@ -10,7 +10,6 @@ const getData = async (page, cat) => {
   if (!res.ok) {
     throw new Error("Failed")
   }
-  console.log(res)
   return res.json()
 }
 

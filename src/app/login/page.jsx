@@ -7,8 +7,6 @@ import Image from 'next/image';
 
 const LoginPage = () => {
   const { data, status } = useSession()
-  console.log(data)
-  console.log(status)
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
