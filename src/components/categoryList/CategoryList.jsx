@@ -23,6 +23,7 @@ const CategoryList = async () => {
           data?.map((item) => (<Link href="/blog?cat=style" className={`${styles.category} ${styles[item.slug]}`}>
             {data.img && <Image
               src={item.img}
+              key={item.id}
               alt=""
               width={32}
               height={32}
@@ -34,7 +35,6 @@ const CategoryList = async () => {
       </div>
     </div>
   );
-
 };
 
 export default CategoryList;
