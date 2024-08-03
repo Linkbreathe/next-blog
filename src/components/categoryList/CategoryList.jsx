@@ -24,6 +24,7 @@ const CategoryList = async () => {
             {data.img && <Image
               src={item.img}
               alt=""
+              key={item.id}
               width={32}
               height={32}
               className={styles.image}
