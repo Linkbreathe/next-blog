@@ -14,7 +14,6 @@ import NoteMap from '@/components/noteMap/NoteMap';
 
 const page = async () => {
     // const { posts, count } = await getData();
-    console.log(posts)
     return (
         <div>
             {/* <NoteMap posts={posts} /> */}
