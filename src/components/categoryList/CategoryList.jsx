@@ -8,6 +8,9 @@ import { Image } from "@nextui-org/react";
 
 const getData = async () => {
   const res = await fetch(`${WEB_API}/categories`, { cache: "no-store" });
+  if (res.status === 304) {
+    return res.json()
+  }
   if (!res.ok) {
     throw new Error("Failed")
   }

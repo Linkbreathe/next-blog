@@ -7,6 +7,9 @@ import POST_PER_PAGE from '@/utils/config'
 
 const getData = async (page, cat) => {
   const res = await fetch(`${WEB_API}/posts?page=${page}&cat=${cat || ""}`, { cache: "no-store" });
+  if (res.status === 304) {
+    return res.json()
+  }
   if (!res.ok) {
     throw new Error("Failed")
   }

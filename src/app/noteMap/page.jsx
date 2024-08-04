@@ -4,6 +4,9 @@ import WEB_API from '@/utils/prefix'
 import NoteMap from '@/components/noteMap/NoteMap';
 const getData = async () => {
     const res = await fetch(`${WEB_API}/geoLocate`)
+    if (res.status === 304) {
+        return res.json()
+    }
     if (!res.ok) {
         // throw new Error("Failed")
         return { posts: [], count: 0 };

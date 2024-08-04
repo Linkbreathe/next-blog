@@ -16,6 +16,9 @@ const formatDate = (isoDate) => {
 
 const getData = async (slug) => {
   const res = await fetch(`${WEB_API}/blog/${slug}`, { cache: "no-store" });
+  if (res.status === 304) {
+    return res.json()
+  }
   if (!res.ok) {
     throw new Error("Failed")
   }
