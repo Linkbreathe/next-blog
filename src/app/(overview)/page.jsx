@@ -10,9 +10,6 @@ export default function Home({ searchParams }) {
   return (
     <div className={styles.container}>
       <Featured />
-      {/* <CategoryList /> */}
-      {/* <MyMapComponent isMarkerShown /> */}
-      {/* <MapRender /> */}
       <div className={styles.content}>
         <CardList page={page} />
         <Menu />

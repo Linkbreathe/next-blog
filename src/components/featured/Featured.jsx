@@ -15,7 +15,6 @@ const Featured = () => {
 
       <div className={styles.post}>
         <div className="w-2/3">
-
           <MapRender />
         </div>
         <div className={styles.textContainer}>
