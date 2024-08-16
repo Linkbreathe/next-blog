@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { Card, Skeleton } from "@nextui-org/react";
 
@@ -5,7 +6,7 @@ export default function PickSkeleton() {
     return (
         <>
 
-            <Card className="w-2/6 space-y-5 p-4 h-[25rem]" radius="lg">
+            <Card className="w-full space-y-5 p-4 h-[25rem]" radius="lg">
                 <Skeleton className="w-1/4 rounded-lg">
                     <div className="h-5 rounded-lg bg-default-200"></div>
                 </Skeleton>
@@ -51,7 +52,6 @@ export default function PickSkeleton() {
                         <Skeleton className="h-3 w-3/5 rounded-lg" />
                         <Skeleton className="h-3 w-4/5 rounded-lg" />
                     </div>
-
                 </div>
             </Card>
 

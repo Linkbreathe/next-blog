@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Suspense } from "react";
 import styles from "./featured.module.css";
-import { Image } from "@nextui-org/image";
+import { Spinner } from "@nextui-org/spinner";
 import MapRender from "@/components/mapRender/MapRender";
+import FeaturedSkeleton from "@/app/ui/FeaturedSkeleton";
 
-const Featured = () => {
+const Featured = async () => {
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>
@@ -12,10 +14,8 @@ const Featured = () => {
       <span className="text-2xl">
         Discover my creativity and endeavor.
       </span>
-
       <div className={styles.post}>
         <div className="w-2/3">
-
           <MapRender />
         </div>
         <div className={styles.textContainer}>

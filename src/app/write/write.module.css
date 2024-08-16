@@ -32,13 +32,24 @@
 }
 .input{
     padding: 50px;
-    font-size: 64px;
+    font-size: 50px;
     border: none;
     outline: none;
     background-color: transparent;
     color:var(--Bg);
 }
 .input::placeholder{
+    color:var(--softBg);
+}
+.briefDescInput{
+    padding: 34px;
+    font-size: 34px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color:var(--Bg);
+}
+.briefDescInput::placeholder{
     color:var(--softBg);
 }
 .textArea{

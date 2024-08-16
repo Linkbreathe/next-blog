@@ -1,0 +1,82 @@
+.container {
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Reduced gap for a tighter layout */
+    border: 1px solid #e2e2e2; /* Add a border to define the card */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Ensure no overflow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.container:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.imageContainer {
+    flex: 1;
+    height: 230px; /* Adjust height for better aspect ratio */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9; /* Light background for better image contrast */
+}
+
+.image {
+    object-fit: cover;
+    border-radius: 8px; /* Match the container's border radius */
+}
+
+.textContainer {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px; /* Padding for spacing */
+}
+
+.date {
+    color: #777; /* Subtle gray color */
+    font-size: 0.9rem; /* Slightly smaller font size */
+}
+
+.category {
+    color: crimson;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: 0.9rem; /* Match the date font size */
+}
+
+.title {
+    font-size: 1.5rem; /* Larger font size for the title */
+    font-weight: bold; /* Bold title for emphasis */
+    margin: 0; /* Remove default margin */
+    color: #333; /* Darker color for better readability */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.title:hover {
+    color: crimson; /* Change color on hover for emphasis */
+}
+
+.link {
+    border-bottom: 1px solid crimson;
+    width: max-content;
+    padding: 2px 0;
+    color: crimson; /* Matching color with border */
+    font-weight: 500; /* Slightly bolder text */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.link:hover {
+    color: #333; /* Change color on hover */
+}
+
+@media screen and (max-width: 1280px) {
+    .imageContainer {
+        display: none;
+    }
+}

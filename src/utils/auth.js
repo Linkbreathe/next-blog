@@ -9,11 +9,15 @@ import { signIn } from "next-auth/react";
 export const authOptions = {
   // global prisma
   adapter: PrismaAdapter(prisma),
+  debug: true,
   // Configure one or more authentication providers
   providers: [
     GoogleProvider({
     clientId: process.env.GOOGLE_ID,
-    clientSecret: process.env.GOOGLE_SECRET
+    clientSecret: process.env.GOOGLE_SECRET,
+    httpOptions: {
+        timeout: 40000,
+      },
   }),
     GithubProvider({
       clientId: process.env.GITHUB_ID,

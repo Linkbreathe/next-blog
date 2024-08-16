@@ -11,8 +11,7 @@ const Footer = () => {
           <h1 className={styles.logoText}>WEI XIONG(LINK)</h1>
         </div>
         <p className={styles.desc}>
-          CS MSC at Aarhus Univeristy | Link Stormborn | the UnStoppable Eater | Prince of my family | First Men of my Parents | Ruler of the Nanchang City and Protector of the Realm
-        </p>
+          CS MSC at Aarhus Univeristy  </p>
         <div className={styles.icons}>
           <Image src="/facebook.png" alt="" width={18} height={18} />
           <Image src="/instagram.png" alt="" width={18} height={18} />

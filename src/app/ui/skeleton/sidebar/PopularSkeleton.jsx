@@ -1,9 +1,10 @@
+"use client"
 import React from "react";
 import { Card, Skeleton } from "@nextui-org/react";
 
 export default function PopularSkeleton() {
     return (
-        <Card className="w-2/6 space-y-5 p-4 h-[34rem]" radius="lg">
+        <Card className="w-full space-y-5 p-4 h-[34rem]" radius="lg">
             <div className="space-y-3">
                 <Skeleton className="w-1/4 rounded-lg">
                     <div className="h-5 rounded-lg bg-default-200"></div>

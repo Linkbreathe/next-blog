@@ -1,97 +1,91 @@
-.contaienr{
+.contaienr {
   height: auto;
 }
-.infoContainer {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-  }
-  
-  .textContainer {
-    flex: 1;
-  }
-  
+
+.title {
+  font-size: 3rem; /* Responsive font size */
+  margin-bottom: 1rem;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.userImageContainer {
+  width: 4rem;
+  height: 4rem;
+  position: relative;
+}
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.userTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--softTextColor);
+}
+
+.username {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.imageContainer {
+  flex: 1;
+  height: 350px;
+  position: relative;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.content {
+  display: flex;
+  gap: 2rem;
+}
+
+.post {
+  flex: 5;
+  margin-top: 4rem;
+}
+
+.description p {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 1536px) {
   .title {
-    font-size: 64px;
-    margin-bottom: 50px;
+    font-size: 2.5rem;
   }
-  
-  .user {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+}
+
+@media screen and (max-width: 1280px) {
+  .title {
+    font-size: 2rem;
   }
-  
-  .userImageContainer {
-    width: 50px;
-    height: 50px;
-    position: relative;
-  }
-  
-  .avatar {
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .userTextContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    color: var(--softTextColor);
-  }
-  
-  .username {
-    font-size: 20px;
-    font-weight: 500;
-  }
-  
+}
+
+@media screen and (max-width: 1024px) {
   .imageContainer {
-    flex: 1;
-    height: 350px;
-    position: relative;
+    display: none;
   }
-  
-  .image {
-    object-fit: cover;
+}
+
+@media screen and (max-width: 640px) {
+  .title {
+    font-size: 1.5rem;
   }
-  
-  .content {
-    display: flex;
-    gap: 50px;
-  }
-  
-  .post {
-    flex: 5;
-    margin-top: 60px;
-  }
-  
+
   .description p {
-    font-size: 20px;
-    font-weight: 300;
-    margin-bottom: 20px;
+    font-size: 1rem;
   }
-  
-  @media screen and (max-width: 1536px) {
-    .title {
-      font-size: 54px;
-    }
-  }
-  @media screen and (max-width: 1280px) {
-    .title {
-      font-size: 48px;
-    }
-  }
-  @media screen and (max-width: 1024px) {
-    .imageContainer {
-      display: none;
-    }
-  }
-  @media screen and (max-width: 640px) {
-    .title {
-      font-size: 36px;
-    }
-  
-    .description p{
-      font-size: 18px;
-    }
-  }
+}

@@ -2,18 +2,20 @@ import styles from "./card.module.css";
 import { Image } from "@nextui-org/image";
 import Link from "next/link";
 
-const options = {
-  wordwrap: 130,
-};
-
-const Card = ({ item }) => {
+const PostItem = ({ item }) => {
   const formattedDate = item.createdAt.split('T')[0];
   return (
     <div className={styles.container}>
-
       <div className={styles.imageContainer}>
-        {
-          item.img && <Image isZoomed className="object-cover" width={500} height={320} src={item.img} alt="" />
+        {item.img &&
+          <Image
+            isZoomed
+            className={styles.image}
+            width={350}
+            height={230}
+            src={item.img}
+            alt={`Image for ${item.title}`}
+          />
         }
       </div>
       <div className={styles.textContainer}>
@@ -22,13 +24,12 @@ const Card = ({ item }) => {
           <span className={styles.category}>{item.catSlug}</span>
         </div>
         <Link href="/">
-          <h1>{item.title}</h1>
+          <h1 className={styles.title}>{item.title}</h1>
         </Link>
-        <div className={styles.texts} dangerouslySetInnerHTML={{ __html: item?.desc }} />
-        <Link href={`/blog/${item.slug}`} className={styles.link}>Read more</Link>
+        <Link href={`/blog/${item.slug}`} className={styles.link}>Read More</Link>
       </div>
     </div>
   );
 };
 
-export default Card;
+export default PostItem;

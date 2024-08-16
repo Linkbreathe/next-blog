@@ -1,6 +1,14 @@
 "use client";
 
 import styles from "./write.module.css";
+import "@uiw/react-md-editor/markdown-editor.css";
+import "@uiw/react-markdown-preview/markdown.css";
+import 'katex/dist/katex.css';
+
+
+import React, { useContext } from 'react';
+import { ThemeContext } from "@/context/ThemeContext";
+
 import useSWR from "swr";
 import WEB_API from "@/utils/prefix";
 import { useState, useEffect, useMemo } from "react";
@@ -10,27 +18,7 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 import { useRouter } from "next/navigation";
 import { Button } from "@nextui-org/react";
 
-import "@uiw/react-md-editor/markdown-editor.css";
-import "@uiw/react-markdown-preview/markdown.css";
-import dynamic from "next/dynamic";
 import getCodeString from 'rehype-rewrite';
-import katex from 'katex';
-import 'katex/dist/katex.css';
-
-import {
-  Image,
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  Spinner,
-  ModalFooter,
-  useDisclosure,
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem
-} from "@nextui-org/react";
 
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { PiLinkSimpleBold } from "react-icons/pi";
@@ -41,6 +29,31 @@ import { notifySuccess, notifyError } from "@/components/noftify/Notify";
 import Notify from "@/components/noftify/Notify";
 import GeoLocateButton from "@/components/geoLocateButton/GeoLocateButton";
 
+import dynamic from "next/dynamic";
+// import katex from 'katex';
+import {
+  useDisclosure,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem
+} from "@nextui-org/react";
+
+// Dynamically import katex
+const katex = dynamic(() => import('katex'), { ssr: false });
+
+// Dynamically import components from @nextui-org/react
+const Image = dynamic(() => import('@nextui-org/react').then(mod => mod.Image), { ssr: false });
+const Modal = dynamic(() => import('@nextui-org/react').then(mod => mod.Modal), { ssr: false });
+const ModalContent = dynamic(() => import('@nextui-org/react').then(mod => mod.ModalContent), { ssr: false });
+const ModalHeader = dynamic(() => import('@nextui-org/react').then(mod => mod.ModalHeader), { ssr: false });
+const ModalBody = dynamic(() => import('@nextui-org/react').then(mod => mod.ModalBody), { ssr: false });
+const ModalFooter = dynamic(() => import('@nextui-org/react').then(mod => mod.ModalFooter), { ssr: false });
+const Spinner = dynamic(() => import('@nextui-org/react').then(mod => mod.Spinner), { ssr: false });
+const MDEditor = dynamic(
+  () => import("@uiw/react-md-editor"),
+  { ssr: false }
+);
 
 function transformStringWithTimestamp(input) {
   let parts = input.split(' ');
@@ -61,11 +74,6 @@ const fetcher = async (url) => {
   return data;
 }
 
-const MDEditor = dynamic(
-  () => import("@uiw/react-md-editor"),
-  { ssr: false }
-);
-
 const storage = getStorage(app);
 
 const WritePage = () => {
@@ -82,7 +90,6 @@ const WritePage = () => {
   const handleOpen = () => {
     onOpen();
   }
-  const [value, setValue] = useState("");
   const [file, setFile] = useState(null)
   const [media, setMedia] = useState("")
   const [title, setTitle] = useState("")
@@ -92,6 +99,7 @@ const WritePage = () => {
 
   const [position, setPosition] = useState({});
   const { status } = useSession();
+  const { theme } = useContext(ThemeContext)
 
   const handleSubmit = async () => {
     // 验证输入
@@ -298,7 +306,7 @@ const WritePage = () => {
           </Button>
           <Notify />
         </div>
-        <div>
+        <div data-color-mode={theme}>
           <MDEditor
             value={desc}
             onChange={(desc) => setDesc(desc)}

@@ -1,12 +1,15 @@
 import styles from '@/components/cardList/cardList.module.css'
 import Pagination from '@/components/pagination/Pagination'
-import Card from '@/components/card/Card'
+import PostItem from '@/components/postItem/PostItem'
 import WEB_API from '@/utils/prefix'
 import POST_PER_PAGE from '@/utils/config'
-
-
+import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 const getData = async (page, cat) => {
+
   const res = await fetch(`${WEB_API}/posts?page=${page}&cat=${cat || ""}`, { cache: "no-store" });
+  if (res.status === 304) {
+    return res.json()
+  }
   if (!res.ok) {
     throw new Error("Failed")
   }
@@ -18,11 +21,11 @@ const CardList = async ({ page, cat }) => {
   const hasPrev = POST_PER_PAGE * (page - 1) > 0
   const hasNext = POST_PER_PAGE * (page - 1) + POST_PER_PAGE < count
   return (
-    <div className={styles.container}>
+    <div >
       <h1 className="text-2xl	py-9">Recent Posts</h1>
       <div className={styles.posts}>
         {post?.map((item) => (
-          <Card key={item.id} item={item} />
+          <PostItem key={item.id} item={item} />
         ))}
       </div>
       <Pagination count={count} page={page} hasPrev={hasPrev} hasNext={hasNext} cat={cat} />
