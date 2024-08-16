@@ -1,3 +1,4 @@
+import styles from "../homepage.module.css";
 // import Featured from "@/components/featured/Featured";
 // import CardList from "@/components/cardList/CardList";
 // import Menu from "@/components/Menu/Menu";
@@ -32,6 +33,7 @@ export default function Home({ searchParams }) {
             <CardList page={page} />
           </Suspense>
         </div>
+
         <div className="flex-1 lg:w-1/4">
           <Suspense
             fallback={

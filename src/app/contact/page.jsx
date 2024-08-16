@@ -8,11 +8,8 @@ import FeaturedSkeleton from "@/app/ui/FeaturedSkeleton"
 const TestComponents = dynamic(() => import("@/components/testComponents/TestComponents"));
 const ContactPage = () => {
     return (
-        <div className='min-h-max h-screen'>
-            <FeaturedSkeleton />
-            <Suspense fallback={<Spinner />} >
-                <TestComponents />
-            </Suspense>
+        <div className=' h-screen'>
+            <PersonInfo />
         </div>
     )
 }

@@ -3,16 +3,16 @@
     display: flex;
     align-items: center;
     gap: 20px; /* Reduced gap for a tighter layout */
-    border: 1px solid #e2e2e2; /* Add a border to define the card */
+    border: 1px solid var(--softBg); /* Add a border to define the card */
     border-radius: 8px; /* Rounded corners */
     overflow: hidden; /* Ensure no overflow */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    box-shadow: 0 4px 8px var(--softBg); /* Subtle shadow for depth */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
 }
 
 .container:hover {
     transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    box-shadow: 0 8px 16px var(--softBg); /* Enhanced shadow on hover */
 }
 
 .imageContainer {

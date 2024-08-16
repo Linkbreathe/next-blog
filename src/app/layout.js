@@ -7,6 +7,7 @@ import { AuthenProvider } from "@/providers/AuthenProvider"
 import {UINextProvider} from "@/providers/UINextProvider";
 import {MapProvider} from "@/providers/MapProvider"
 import NextUIThemeProvider from "@/providers/NextUIThemeProvider";
+import { Analytics } from '@vercel/analytics/react';
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -15,9 +16,6 @@ export const metadata = {
   title: "Blog App",
   description: "The best blog app!",
 };
-
-const position = {lat: 48.932817, lng: 65.875769};
-
 
 export default function RootLayout({ children }) {
 
@@ -29,7 +27,7 @@ export default function RootLayout({ children }) {
             <ThemeContextProvider>
                 <NextUIThemeProvider >
                 <MapProvider>
-                  <div className="wrapper">
+                  <div className="wrapper w-[90vw]">
                     <MyNavbar />
                     {children}
                     <Footer />
@@ -39,6 +37,7 @@ export default function RootLayout({ children }) {
             </ThemeContextProvider>
           </AuthenProvider>
           </UINextProvider>
+          <Analytics />
       </body>
     </html>
   );
